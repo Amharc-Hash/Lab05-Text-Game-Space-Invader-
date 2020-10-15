@@ -1,9 +1,8 @@
-﻿#define CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
+﻿#include<stdio.h>
 #include<conio.h>
 #include<windows.h>
 char ch = '.';
-int direction = 0, x = 38, y = 20, bullet[5] = { 0 } , xbullet[5], ybullet[5] = { 20,20,20,20,20 }, bulletPoint = -1;
+int direction = 0, x = 38, y = 20, bullet[5] = { 0 }, xbullet[5], ybullet[5] = { 20,20,20,20,20 }, bulletPoint = -1;
 
 void gotoxy(int, int);
 void setcolor(int, int);
@@ -22,7 +21,7 @@ int main()
 	do {
 		for (int i = 0; i <= 5; i++)
 		{
-			if (bullet[i]==0)
+			if (bullet[i] == 0)
 			{
 				xbullet[i] = x;
 			}
@@ -32,7 +31,7 @@ int main()
 			if (ch == 'a' || ch == 'A') { direction = 1; }
 			if (ch == 'd' || ch == 'D') { direction = 2; }
 			if (ch == 's' || ch == 'S') { direction = 0; }
-			if (ch == ' ' && bulletPoint<4) { ++bulletPoint; bullet[bulletPoint] = 1; }
+			if (ch == ' ' && bulletPoint < 4) { ++bulletPoint; bullet[bulletPoint] = 1; }
 
 		}
 		if (direction == 1 && x > 0)
@@ -47,7 +46,7 @@ int main()
 		}
 		for (int j = 0; j <= 4; j++)
 		{
-			if (bullet[j]==1 && ybullet>0) {
+			if (bullet[j] == 1 && ybullet > 0) {
 				erase_shot(xbullet[j], ybullet[j]);
 				draw_shot(xbullet[j], --ybullet[j]);
 			}
@@ -111,16 +110,13 @@ void erase_ship(int x, int y)
 void draw_shot(int x, int y)
 {
 	setcolor(4, 6);
-	gotoxy(x+=3, --y);
+	gotoxy(x += 3, --y);
 	printf("^");
 }
 
 void erase_shot(int x, int y)
 {
-	gotoxy(x+=3, --y);
+	gotoxy(x += 3, --y);
 	setcolor(0, 0);
 	printf(" ");
 }
-
-
-
